@@ -1,0 +1,5 @@
+/vendor/
+/logs/
+config.local.php
+.DS_Store
+/sessions/

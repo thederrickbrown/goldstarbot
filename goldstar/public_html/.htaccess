@@ -1,0 +1,15 @@
+# GoldStarBot front controller routing
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+  RewriteRule ^(.*) - [E=BASE:%1]
+
+  # Route everything that is not a real file to the front controller,
+  # EXCEPT the existing static landing page at the domain root.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+# PHP version is set to 8.2 via SiteGround Site Tools (server default).
+# No AddHandler line is needed; adding a wrong one would break the site.
